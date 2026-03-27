@@ -171,8 +171,10 @@ Plot a constant current `I = 2A` over 5 seconds. The integral — the area under
 
 You're ready for the next module when you can do all of these without looking anything up:
 
-- [ ] Differentiate <KatexMath expression="f(t) = 4t^3 - 2t + 7" />
-- [ ] Explain in plain English what the derivative tells you about a signal
-- [ ] Integrate <KatexMath expression="\int 3t^2 \, dt" /> and evaluate it from <KatexMath expression="t = 0" :displayMode="false" /> to <KatexMath expression="t = 2" :displayMode="false" />
-- [ ] Explain what the I term in a PID controller is accumulating and why that fixes steady-state error
-- [ ] Sketch what <KatexMath expression="f(t) = t^2" :displayMode="false" /> and its derivative <KatexMath expression="f'(t) = 2t" :displayMode="false" /> both look like on a graph
+<SelfCheckList storageKey="basic-calculus-checklist" :items="[
+  { id: '1', label: 'Differentiate /f(t) = 4t^3 - 2t + 7/' },
+  { id: '2', label: 'Explain in plain English what the derivative tells you about a signal' },
+  { id: '3', label: 'Integrate /\\int 3t^2 \\, dt/ and evaluate it from /t = 0/ to /t = 2/' },
+  { id: '4', label: 'Explain what the I term in a PID controller is accumulating and why that fixes steady-state error' },
+  { id: '5', label: 'Sketch what /f(t) = t^2/ and its derivative /f\'(t) = 2t/ both look like on a graph' }
+]" />
