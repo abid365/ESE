@@ -4,6 +4,11 @@
 **Time to complete**: ~5 weeks, 1–2 hours per day.  
 **Why it matters**: Before you touch a PID controller, a Kalman filter, or a DSP algorithm, calculus is the language those systems speak. This module builds that language from scratch.
 
+**Videos**:
+
+- [3Blue1Brown - Essence of Calculus](https://www.youtube.com/results?search_query=3Blue1Brown+-+Essence+of+Calculus)
+- [Khan Academy - Calculus 1](https://www.khanacademy.org/math/ap-calculus-ab)
+
 ---
 
 ## How this connects to embedded work

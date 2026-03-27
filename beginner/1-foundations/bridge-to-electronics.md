@@ -12,6 +12,10 @@ Microcontrollers don't exist in isolation. Every GPIO pin connects to something 
 
 This module gives you the vocabulary and intuition to read hardware the same way you read code.
 
+**Videos**:
+- [Electronic Basics - GreatScott!](https://www.youtube.com/playlist?list=PLgyFKdJBORkkC3KmqeNFLgXaAvMaJFlh-)
+- [Make: Electronics](https://www.youtube.com/results?search_query=Make+Electronics+tutorial)
+
 ---
 
 ## Resistors

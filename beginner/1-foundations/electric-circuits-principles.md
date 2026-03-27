@@ -8,6 +8,11 @@ Before writing firmware to toggle pins or read sensors, you need the circuit-lev
 - It turns debugging from guessing into measurement-based diagnosis.
 - It helps design power-efficient systems for battery-operated products.
 
+**Videos**:
+
+- [Basic Circuit Theory I - Prof. Razavi](https://www.youtube.com/watch?v=NSjn0C4jZCs)
+- [Circuit Analysis A-Z by Question Solutions](https://www.youtube.com/results?search_query=Circuit+Analysis+A-Z+Question+Solutions)
+
 ## Detailed Theory Topics
 
 ### Ohm's Law
