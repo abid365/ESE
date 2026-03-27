@@ -51,16 +51,20 @@ export default defineConfig({
                 link: "/beginner/2-c-programming/c-syntax-basics.md",
               },
               {
-                text: "Control Flow and Functions",
-                link: "/beginner/2-c-programming/control-flow-and-functions.md",
-              },
-              {
                 text: "Arrays, Pointers, and Memory",
                 link: "/beginner/2-c-programming/arrays-pointers-memory.md",
               },
               {
+                text: "Control Flow and Functions",
+                link: "/beginner/2-c-programming/control-flow-and-functions.md",
+              },
+              {
                 text: "C++ Basics: OOP",
                 link: "/beginner/2-c-programming/cpp-basics.md",
+              },
+              {
+                text: "C Standard Lib & C++ Overview",
+                link: "/beginner/2-c-programming/c-standard-lib-and-cpp-overview.md",
               },
             ],
           },

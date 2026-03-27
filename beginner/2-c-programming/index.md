@@ -6,6 +6,7 @@
 - Learn C++ OOP concepts: classes, inheritance, polymorphism.
 - Write and debug small procedural and object-oriented programs.
 - Build habits for memory-safe and readable code.
+- Know essential C libraries for embedded and basic C++.
 
 ## Topics
 
@@ -13,6 +14,7 @@
 - Functions and modular code
 - Arrays, pointers, and basic memory concepts
 - C++ classes and object-oriented programming
+- C standard library and embedded libraries
 
 ## Deep Dives
 
@@ -20,6 +22,7 @@
 - [Control Flow and Functions](./control-flow-and-functions.md)
 - [Arrays, Pointers, and Memory](./arrays-pointers-memory.md)
 - [C++ Basics: OOP](./cpp-basics.md)
+- [C Standard Library and C++ Overview](./c-standard-lib-and-cpp-overview.md)
 
 ## Recommended Videos
 
