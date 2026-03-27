@@ -58,7 +58,9 @@ A PID controller's derivative term computes:
 
 <KatexMath expression="\mathrm{D\_term} = K_d \cdot \frac{d(\mathrm{error})}{dt}" :displayMode="true" />
 
-> **What this does**: Responds to how fast the error is changing. If error is decreasing rapidly, the D term "brakes" early to prevent overshoot.
+::: tip What the D term does
+Responds to how fast the error is changing. If error is decreasing rapidly, the D term "brakes" early to prevent overshoot.
+:::
 
 This asks: "is the error growing or shrinking, and how fast?" If your motor is overshooting a target position and the error is decreasing rapidly, the D term brakes early — before the overshoot happens. Without derivatives, you'd always react late.
 
@@ -90,7 +92,9 @@ The integral term in PID:
 
 <KatexMath expression="\mathrm{I\_term} = K_i \cdot \int \mathrm{error}(t) \, dt" :displayMode="true" />
 
-> **What this does**: Accumulates error over time. If the system has been below target for a while, the I term builds up and pushes harder to eliminate the persistent offset.
+::: tip What the I term does
+Accumulates error over time. If the system has been below target for a while, the I term builds up and pushes harder to eliminate the persistent offset.
+:::
 
 This accumulates error over time. If your heater holds temperature slightly below target for 60 seconds, the I term has been building up — it will nudge the output higher to correct that persistent offset. Without it, your system can be permanently off by a small amount (called steady-state error).
 
