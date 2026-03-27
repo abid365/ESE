@@ -20,7 +20,7 @@ This module gives you the vocabulary and intuition to read hardware the same way
 
 A resistor opposes the flow of current. That one property makes them useful in almost every circuit. The governing relationship is Ohm's Law:
 
-<KatexMath expression="V = IR" :displayMode="true" />
+<KatexMath :expression="'V = IR'" :displayMode="true" />
 
 where $V$ is voltage across the resistor, $I$ is current through it, and $R$ is resistance in ohms.
 
@@ -30,7 +30,7 @@ Every MCU datasheet specifies a maximum current per GPIO pin — typically 8–2
 
 With a series resistor, you control the current precisely:
 
-<KatexMath expression="R = \frac{V_{\text{supply}} - V_f}{I_{\text{desired}}}" :displayMode="true" />
+<KatexMath :expression="'R = \\frac{V_{\\text{supply}} - V_f}{I_{\\text{desired}}}'" :displayMode="true" />
 
 For a 3.3V supply, a red LED with <KatexMath expression="V_f = 2.0\,\text{V}" />, and a target of 10 mA:
 
@@ -193,9 +193,14 @@ Find the datasheet for any MCU you plan to use (STM32, ATmega, RP2040) and locat
 
 You're ready for the next module when you can answer all of these without looking anything up:
 
-- [ ] A 3.3V GPIO drives a green LED (<KatexMath expression="V_f = 2.1\,\text{V}" />) at 10mA. What resistor value do you use?
-- [ ] What does a decoupling capacitor do, and where physically should it be placed on a PCB?
-- [ ] Your ADC reads 0–3.3V but your sensor outputs 0–5V. Sketch the voltage divider and calculate <KatexMath expression="R_1" /> and <KatexMath expression="R_2" />.
-- [ ] A relay coil draws 80mA. Your GPIO can source 8mA. What component do you add, and what else must you include to protect it?
-- [ ] What is a flyback diode and when is it mandatory?
-- [ ] What is the RC time constant <KatexMath expression="\tau" /> and what does it determine in a filter circuit?
+<SelfCheckList 
+  storageKey="bridge-to-electronics-selfcheck"
+  :items='[
+    { id: 1, label: "A 3.3V GPIO drives a green LED /V_f = 2.1\\,V/ at 10mA. What resistor value do you use?" },
+    { id: 2, label: "What does a decoupling capacitor do, and where physically should it be placed on a PCB?" },
+    { id: 3, label: "Your ADC reads 0–3.3V but your sensor outputs 0–5V. Sketch the voltage divider and calculate /R_1/ and /R_2/." },
+    { id: 4, label: "A relay coil draws 80mA. Your GPIO can source 8mA. What component do you add, and what else must you include to protect it?" },
+    { id: 5, label: "What is a flyback diode and when is it mandatory?" },
+    { id: 6, label: "What is the RC time constant /tau/ and what does it determine in a filter circuit?" }
+  ]'
+/>

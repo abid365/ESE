@@ -20,6 +20,6 @@
 
 ## Recommended Videos
 
-- [Khan Academy - Calculus 1](https://www.youtube.com/user/khanacademy)
-- [Basic Circuit Theory I (By Prof. Razavi)](https://www.youtube.com/playlist?list=PLmYAn6p6p6vQpL8o_GvscfS-O0K-XvX5H)
-- [Electronic Basics - GreatScott!](https://www.youtube.com/playlist?list=PLAROrg3h2S6-u06lreV_f41F0Y-JiqK01)
+- [Khan Academy - Calculus 1](https://www.youtube.com/results?search_query=khan+academy+calculus)
+- [Basic Circuit Theory I (By Prof. Razavi)](<https://www.youtube.com/results?search_query=Basic+Circuit+Theory+I+(By+Prof.+Razavi)>)
+- [Electronic Basics - GreatScott!](https://www.youtube.com/results?search_query=Electronic+Basics+-+GreatScott!)
