@@ -42,7 +42,32 @@ export default defineConfig({
               },
             ],
           },
-          { text: "2. C Programming", link: "/beginner/2-c-programming/" },
+          {
+            text: "2. C/C++ Programming",
+            items: [
+              { text: "Overview", link: "/beginner/2-c-programming/" },
+              {
+                text: "C Syntax Basics",
+                link: "/beginner/2-c-programming/c-syntax-basics.md",
+              },
+              {
+                text: "Arrays, Pointers, and Memory",
+                link: "/beginner/2-c-programming/arrays-pointers-memory.md",
+              },
+              {
+                text: "Control Flow and Functions",
+                link: "/beginner/2-c-programming/control-flow-and-functions.md",
+              },
+              {
+                text: "C++ Basics: OOP",
+                link: "/beginner/2-c-programming/cpp-basics.md",
+              },
+              {
+                text: "C Standard Lib & C++ Overview",
+                link: "/beginner/2-c-programming/c-standard-lib-and-cpp-overview.md",
+              },
+            ],
+          },
           { text: "3. Prototyping", link: "/beginner/3-prototyping/" },
         ],
       },

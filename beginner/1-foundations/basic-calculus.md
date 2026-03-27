@@ -4,6 +4,11 @@
 **Time to complete**: ~5 weeks, 1–2 hours per day.  
 **Why it matters**: Before you touch a PID controller, a Kalman filter, or a DSP algorithm, calculus is the language those systems speak. This module builds that language from scratch.
 
+**Videos**:
+
+- [3Blue1Brown - Essence of Calculus](https://www.youtube.com/results?search_query=3Blue1Brown+-+Essence+of+Calculus)
+- [Khan Academy - Calculus 1](https://www.khanacademy.org/math/ap-calculus-ab)
+
 ---
 
 ## How this connects to embedded work
@@ -12,10 +17,8 @@ Every sensor reading is a function of time. A temperature sensor outputs a value
 
 **Quick example**: Your accelerometer gives you `a(t)` — acceleration at time `t`. You can't directly measure velocity or position. But:
 
-```
-velocity(t) = ∫ a(t) dt     ← integrate acceleration
-position(t) = ∫ v(t) dt     ← integrate again
-```
+<KatexMath expression="\mathrm{velocity}(t) = \int a(t) dt" :displayMode="true" />
+<KatexMath expression="\mathrm{position}(t) = \int v(t) dt" :displayMode="true" />
 
 This is dead reckoning, used in drones, robots, and wearables. You'll implement this in a later module.
 
@@ -43,15 +46,13 @@ This is dead reckoning, used in drones, robots, and wearables. You'll implement 
 
 **Core idea**: The derivative of a function at a point is its instantaneous rate of change — the slope of the tangent line at that point.
 
-```
-f'(x) = lim[h→0] (f(x+h) - f(x)) / h
-```
+<KatexMath expression="f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}" :displayMode="true" />
 
 Think of it as: "if I nudge `x` by a tiny amount, how much does `f(x)` change?"
 
 **Rules to learn (in this order)**:
 
-1. Power rule: `d/dx [xⁿ] = n·xⁿ⁻¹`
+1. Power rule: <KatexMath expression="\frac{d}{dx}[x^n] = n \cdot x^{n-1}" />
 2. Sum rule: derivative of a sum = sum of derivatives
 3. Product rule: for functions multiplied together
 4. Chain rule: for functions nested inside other functions
@@ -60,17 +61,17 @@ Think of it as: "if I nudge `x` by a tiny amount, how much does `f(x)` change?"
 
 A PID controller's derivative term computes:
 
-```
-D_term = Kd · d(error)/dt
-```
+<KatexMath expression="\mathrm{D\_term} = K_d \cdot \frac{d(\mathrm{error})}{dt}" :displayMode="true" />
+
+::: tip What the D term does
+Responds to how fast the error is changing. If error is decreasing rapidly, the D term "brakes" early to prevent overshoot.
+:::
 
 This asks: "is the error growing or shrinking, and how fast?" If your motor is overshooting a target position and the error is decreasing rapidly, the D term brakes early — before the overshoot happens. Without derivatives, you'd always react late.
 
 **Worked example**: Suppose error `e(t) = 5·sin(2t)`. Then:
 
-```
-de/dt = 10·cos(2t)
-```
+<KatexMath expression="\frac{de}{dt} = 10 \cdot \cos(2t)" :displayMode="true" />
 
 At `t = 0`, the error is 0 but its rate of change is 10 — the system is moving fast toward an error. The D term catches this early.
 
@@ -82,13 +83,11 @@ At `t = 0`, the error is 0 but its rate of change is 10 — the system is moving
 
 **Core idea**: Integration is the reverse of differentiation. It computes the area under a curve — equivalently, the total accumulated value of a quantity over an interval.
 
-```
-∫[a to b] f(t) dt  =  total area under f(t) from a to b
-```
+<KatexMath expression="\int_a^b f(t) \, dt = \mathrm{total\ area\ under\ } f(t) \mathrm{\ from\ } a \mathrm{\ to\ } b" :displayMode="true" />
 
 **Rules to learn**:
 
-1. Power rule for integration: `∫ xⁿ dx = xⁿ⁺¹ / (n+1) + C`
+1. Power rule for integration: <KatexMath expression="\int x^n \, dx = \frac{x^{n+1}}{n+1} + C" />
 2. Definite vs indefinite integrals (the difference between "total over a range" vs "general formula")
 3. Fundamental theorem of calculus: differentiation and integration are inverse operations
 
@@ -96,17 +95,17 @@ At `t = 0`, the error is 0 but its rate of change is 10 — the system is moving
 
 The integral term in PID:
 
-```
-I_term = Ki · ∫ error(t) dt
-```
+<KatexMath expression="\mathrm{I\_term} = K_i \cdot \int \mathrm{error}(t) \, dt" :displayMode="true" />
+
+::: tip What the I term does
+Accumulates error over time. If the system has been below target for a while, the I term builds up and pushes harder to eliminate the persistent offset.
+:::
 
 This accumulates error over time. If your heater holds temperature slightly below target for 60 seconds, the I term has been building up — it will nudge the output higher to correct that persistent offset. Without it, your system can be permanently off by a small amount (called steady-state error).
 
 Battery state of charge works the same way:
 
-```
-charge_remaining = initial_charge - ∫ current(t) dt
-```
+<KatexMath expression="\mathrm{charge\_remaining} = \mathrm{initial\_charge} - \int I(t) \, dt" :displayMode="true" />
 
 Every embedded fuel gauge implements this, often called coulomb counting.
 
@@ -120,11 +119,9 @@ By now you have both tools. Here's a realistic embedded workflow:
 
 **Scenario**: You're writing firmware for a balance robot. The IMU gives you angular velocity `ω(t)` from the gyroscope.
 
-```
-angle(t) = ∫ ω(t) dt         ← integrate gyro to get tilt angle
-error(t) = target - angle(t)  ← how far off vertical?
-correction = Kp·e + Ki·∫e dt + Kd·de/dt   ← full PID
-```
+<KatexMath expression="\mathrm{angle}(t) = \int \omega(t) \, dt" :displayMode="true" />
+<KatexMath expression="\mathrm{error}(t) = \mathrm{target} - \mathrm{angle}(t)" :displayMode="true" />
+<KatexMath expression="\mathrm{correction} = K_p \cdot e + K_i \cdot \int e \, dt + K_d \cdot \frac{de}{dt}" :displayMode="true" />
 
 All three calculus operations appear in a single control loop. When you tune `Kp`, `Ki`, and `Kd`, you are adjusting how aggressively the system responds to value, accumulation, and rate of change respectively.
 
@@ -174,8 +171,10 @@ Plot a constant current `I = 2A` over 5 seconds. The integral — the area under
 
 You're ready for the next module when you can do all of these without looking anything up:
 
-- [ ] Differentiate `f(t) = 4t³ - 2t + 7`
-- [ ] Explain in plain English what the derivative tells you about a signal
-- [ ] Integrate `∫ 3t² dt` and evaluate it from `t = 0` to `t = 2`
-- [ ] Explain what the I term in a PID controller is accumulating and why that fixes steady-state error
-- [ ] Sketch what `f(t) = t²` and its derivative `f'(t) = 2t` both look like on a graph
+<SelfCheckList storageKey="basic-calculus-checklist" :items="[
+  { id: '1', label: 'Differentiate /f(t) = 4t^3 - 2t + 7/' },
+  { id: '2', label: 'Explain in plain English what the derivative tells you about a signal' },
+  { id: '3', label: 'Integrate /\\int 3t^2 \\, dt/ and evaluate it from /t = 0/ to /t = 2/' },
+  { id: '4', label: 'Explain what the I term in a PID controller is accumulating and why that fixes steady-state error' },
+  { id: '5', label: 'Sketch what /f(t) = t^2/ and its derivative /f\'(t) = 2t/ both look like on a graph' }
+]" />

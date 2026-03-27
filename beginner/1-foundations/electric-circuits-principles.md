@@ -8,11 +8,16 @@ Before writing firmware to toggle pins or read sensors, you need the circuit-lev
 - It turns debugging from guessing into measurement-based diagnosis.
 - It helps design power-efficient systems for battery-operated products.
 
+**Videos**:
+
+- [Basic Circuit Theory I - Prof. Razavi](https://www.youtube.com/watch?v=NSjn0C4jZCs)
+- [Circuit Analysis A-Z by Question Solutions](https://www.youtube.com/results?search_query=Circuit+Analysis+A-Z+Question+Solutions)
+
 ## Detailed Theory Topics
 
 ### Ohm's Law
 
-$V = IR$
+<KatexMath expression="V = IR" :displayMode="true" />
 
 - Core relationship between voltage, current, and resistance.
 - Used to verify safe current draw from microcontroller pins.
@@ -29,7 +34,7 @@ $V = IR$
 
 ### Power and Energy
 
-$P = VI$
+<KatexMath expression="P = VI" :displayMode="true" />
 
 - Central to runtime and thermal budgeting.
 - Critical in low-power IoT and wearable designs.
@@ -61,3 +66,11 @@ Given a 3.3 V microcontroller and target LED current of 20 mA:
 ### Video
 
 - [Basic Circuit Theory I (Prof. Razavi)](https://www.youtube.com/playlist?list=PLmYAn6p6p6vQpL8o_GvscfS-O0K-XvX5H)
+
+<SelfCheckList storageKey="electric-circuits-checklist" :items="[
+  { id: '1', label: 'Use Ohm\'s Law to calculate the current through a resistor given voltage and resistance' },
+  { id: '2', label: 'Apply KCL to find the current at a node where multiple branches meet' },
+  { id: '3', label: 'Apply KVL to write the equation for a simple loop with a voltage source and resistors' },
+  { id: '4', label: 'Calculate the power consumed by a component using /P = VI/' },
+  { id: '5', label: 'Size a current-limiting resistor for an LED given source voltage, LED forward voltage, and desired current' }
+]" />
