@@ -13,8 +13,8 @@ Microcontrollers don't exist in isolation. Every GPIO pin connects to something 
 This module gives you the vocabulary and intuition to read hardware the same way you read code.
 
 **Videos**:
-- [Electronic Basics - GreatScott!](https://www.youtube.com/playlist?list=PLgyFKdJBORkkC3KmqeNFLgXaAvMaJFlh-)
-- [Make: Electronics](https://www.youtube.com/results?search_query=Make+Electronics+tutorial)
+
+- [Electronic Basics - GreatScott!](https://www.youtube.com/results?search_query=Electronic+Basics+-+GreatScott!)
 
 ---
 
@@ -200,11 +200,11 @@ You're ready for the next module when you can answer all of these without lookin
 <SelfCheckList 
   storageKey="bridge-to-electronics-selfcheck"
   :items='[
-    { id: 1, label: "A 3.3V GPIO drives a green LED /V_f = 2.1\\,V/ at 10mA. What resistor value do you use?" },
+    { id: 1, label: "A 3.3V GPIO drives a green LED V_f = 2.1V at 10mA. What resistor value do you use?" },
     { id: 2, label: "What does a decoupling capacitor do, and where physically should it be placed on a PCB?" },
-    { id: 3, label: "Your ADC reads 0–3.3V but your sensor outputs 0–5V. Sketch the voltage divider and calculate /R_1/ and /R_2/." },
+    { id: 3, label: "Your ADC reads 0–3.3V but your sensor outputs 0–5V. Sketch the voltage divider and calculate R1 and R2." },
     { id: 4, label: "A relay coil draws 80mA. Your GPIO can source 8mA. What component do you add, and what else must you include to protect it?" },
     { id: 5, label: "What is a flyback diode and when is it mandatory?" },
-    { id: 6, label: "What is the RC time constant /tau/ and what does it determine in a filter circuit?" }
+    { id: 6, label: "What is the RC time constant tau and what does it determine in a filter circuit?" }
   ]'
 />
