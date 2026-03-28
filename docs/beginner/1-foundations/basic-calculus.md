@@ -10,22 +10,22 @@
 - [Khan Academy - Calculus 1](https://www.khanacademy.org/math/ap-calculus-ab)
 
 <CoursePlayer
-videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM"
-storageKey="foundations-basic-calculus"
-:lessons="[
-{ title: 'The Essence Of Calculus', link: '[/docs/beginner/1-foundations/](https://www.youtube.com/watch?v=WUvTyaaNkzM)' },
-{ title: 'The paradox of the derivative | Chapter 2', link: '/docs/beginner/1-foundations/basic-calculus' },
-{ title: 'Derivative formulas through geometry | Chapter 3', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
-{ title: 'Visualizing the chain rule and product rule | Chapter 4', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'What\'s so special about Euler\'s number e? | Chapter 5', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'Implicit differentiation, what\'s going on here? | Chapter 6', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'Limits, L\'Hôpital\'s rule, and epsilon delta definitions | Chapter 7', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'Integration and the fundamental theorem of calculus | Chapter 8', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'What does area have to do with slope? | Chapter 9', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'Higher order derivatives | Chapter 10', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'Taylor series | Chapter 11', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-{ title: 'The other way to visualize derivatives | Chapter 12', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
-]"
+  videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM"
+  storageKey="foundations-basic-calculus"
+  :lessons="[
+    { title: 'The Essence Of Calculus', link: 'https://www.youtube.com/watch?v=WUvTyaaNkzM' },
+    { title: 'The paradox of the derivative | Chapter 2', link: 'https://www.youtube.com/watch?v=9vKqVkMQHKk' },
+    { title: 'Derivative formulas through geometry | Chapter 3', link: 'https://www.youtube.com/watch?v=S0_qX4VJhMQ' },
+    { title: 'Visualizing the chain rule and product rule | Chapter 4', link: 'https://www.youtube.com/watch?v=YG15m2VwSjA' },
+    { title: 'What\'s so special about Euler\'s number e? | Chapter 5', link: 'https://www.youtube.com/watch?v=m2MIpDrF7Es' },
+    { title: 'Implicit differentiation | Chapter 6', link: 'https://www.youtube.com/watch?v=qb40J4N1fa4' },
+    { title: 'Limits, L\'Hôpital\'s rule | Chapter 7', link: 'https://www.youtube.com/watch?v=kfF40MiS7zA' },
+    { title: 'Integration and the fundamental theorem | Chapter 8', link: 'https://www.youtube.com/watch?v=rfG8ce4nNh0' },
+    { title: 'What does area have to do with slope? | Chapter 9', link: 'https://www.youtube.com/watch?v=FnJqaIESC2s' },
+    { title: 'Higher order derivatives | Chapter 10', link: 'https://www.youtube.com/watch?v=BLkz5LGWihw' },
+    { title: 'Taylor series | Chapter 11', link: 'https://www.youtube.com/watch?v=3d6DsjIBzJ4' },
+    { title: 'The other way to visualize derivatives | Chapter 12', link: 'https://www.youtube.com/watch?v=CfW845LNObM' }
+  ]"
 />
 
 ---
