@@ -27,62 +27,62 @@ export default defineConfig({
           {
             text: "1. Foundations",
             items: [
-              { text: "Overview", link: "/beginner/1-foundations/" },
+              { text: "Overview", link: "/docs/beginner/1-foundations/" },
               {
                 text: "Basic Calculus",
-                link: "/beginner/1-foundations/basic-calculus",
+                link: "/docs/beginner/1-foundations/basic-calculus",
               },
               {
                 text: "Electric Circuits Principles",
-                link: "/beginner/1-foundations/electric-circuits-principles",
+                link: "/docs/beginner/1-foundations/electric-circuits-principles",
               },
               {
                 text: "Bridge to Electronics",
-                link: "/beginner/1-foundations/bridge-to-electronics",
+                link: "/docs/beginner/1-foundations/bridge-to-electronics",
               },
             ],
           },
           {
             text: "2. C/C++ Programming",
             items: [
-              { text: "Overview", link: "/beginner/2-c-programming/" },
+              { text: "Overview", link: "/docs/beginner/2-c-programming/" },
               {
                 text: "C Syntax Basics",
-                link: "/beginner/2-c-programming/c-syntax-basics.md",
+                link: "/docs/beginner/2-c-programming/c-syntax-basics.md",
               },
               {
                 text: "Arrays, Pointers, and Memory",
-                link: "/beginner/2-c-programming/arrays-pointers-memory.md",
+                link: "/docs/beginner/2-c-programming/arrays-pointers-memory.md",
               },
               {
                 text: "Control Flow and Functions",
-                link: "/beginner/2-c-programming/control-flow-and-functions.md",
+                link: "/docs/beginner/2-c-programming/control-flow-and-functions.md",
               },
               {
                 text: "C++ Basics: OOP",
-                link: "/beginner/2-c-programming/cpp-basics.md",
+                link: "/docs/beginner/2-c-programming/cpp-basics.md",
               },
               {
                 text: "C Standard Lib & C++ Overview",
-                link: "/beginner/2-c-programming/c-standard-lib-and-cpp-overview.md",
+                link: "/docs/beginner/2-c-programming/c-standard-lib-and-cpp-overview.md",
               },
             ],
           },
-          { text: "3. Prototyping", link: "/beginner/3-prototyping/" },
+          { text: "3. Prototyping", link: "/docs/beginner/3-prototyping/" },
         ],
       },
       {
         text: "Intermediate",
         collapsed: false,
         items: [
-          { text: "1. Bare-Metal", link: "/intermediate/1-bare-metal/" },
+          { text: "1. Bare-Metal", link: "/docs/intermediate/1-bare-metal/" },
           {
             text: "2. Programming and Protocols",
-            link: "/intermediate/2-programming-protocols/",
+            link: "/docs/intermediate/2-programming-protocols/",
           },
           {
             text: "3. PCB, Debugging, and RTOS",
-            link: "/intermediate/3-pcb-debugging-rtos/",
+            link: "/docs/intermediate/3-pcb-debugging-rtos/",
           },
         ],
       },
@@ -92,15 +92,15 @@ export default defineConfig({
         items: [
           {
             text: "1. Linux and Build Systems",
-            link: "/advanced/1-linux-build-systems/",
+            link: "/docs/advanced/1-linux-build-systems/",
           },
           {
             text: "2. AI, DSP, and Control",
-            link: "/advanced/2-ai-dsp-control/",
+            link: "/docs/advanced/2-ai-dsp-control/",
           },
           {
             text: "3. Security and AUTOSAR",
-            link: "/advanced/3-security-autosar/",
+            link: "/docs/advanced/3-security-autosar/",
           },
         ],
       },
