@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vitepress'
 import PlaylistSidebar from './PlaylistSidebar.vue'
 
 interface Lesson {
@@ -13,6 +14,31 @@ const props = defineProps<{
   lessons: Lesson[]
 }>()
 
+const route = useRoute()
+
+const currentVideoIndex = computed(() => {
+  const idx = props.lessons.findIndex(
+    l => l.link === route.path || l.link === route.path + '.html' || l.link === route.path.replace(/\/$/, '')
+  )
+  return idx >= 0 ? idx : 0
+})
+
+const isYouTube = computed(() => {
+  return props.videoSrc.includes('youtube.com') || props.videoSrc.includes('youtu.be')
+})
+
+const youtubeVideoId = computed(() => {
+  if (!isYouTube.value) return ''
+  const url = props.videoSrc
+  const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)
+  return match ? match[1] : ''
+})
+
+const youtubeEmbedUrl = computed(() => {
+  if (!youtubeVideoId.value) return ''
+  return `https://www.youtube.com/embed/${youtubeVideoId.value}?rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1`
+})
+
 const videoRef = ref<HTMLVideoElement | null>(null)
 const isPlaying = ref(false)
 const currentTime = ref(0)
@@ -22,6 +48,7 @@ const isMuted = ref(false)
 const isFullscreen = ref(false)
 const showControls = ref(true)
 const hideControlsTimeout = ref<number | null>(null)
+const playerReady = ref(false)
 
 const formattedCurrentTime = computed(() => formatTime(currentTime.value))
 const formattedDuration = computed(() => formatTime(duration.value))
@@ -94,7 +121,7 @@ function toggleMute() {
 }
 
 function toggleFullscreen() {
-  const container = document.querySelector('.course-player') as HTMLElement
+  const container = document.querySelector('.video-container') as HTMLElement
   if (!container) return
 
   if (!document.fullscreenElement) {
@@ -145,66 +172,76 @@ onUnmounted(() => {
 <template>
   <div class="course-player" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave">
     <div class="video-container">
-      <video
-        ref="videoRef"
-        :src="videoSrc"
-        @timeupdate="handleTimeUpdate"
-        @loadedmetadata="handleLoadedMetadata"
-        @play="handlePlay"
-        @pause="handlePause"
-        @ended="handleEnded"
-        @click="togglePlay"
-      ></video>
+      <template v-if="isYouTube && youtubeEmbedUrl">
+        <iframe
+          :src="youtubeEmbedUrl"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </template>
+      <template v-else>
+        <video
+          ref="videoRef"
+          :src="videoSrc"
+          @timeupdate="handleTimeUpdate"
+          @loadedmetadata="handleLoadedMetadata"
+          @play="handlePlay"
+          @pause="handlePause"
+          @ended="handleEnded"
+          @click="togglePlay"
+        ></video>
 
-      <div class="controls" :class="{ visible: showControls }">
-        <div class="progress-container" @click="seek">
-          <div class="progress-bar-bg">
-            <div 
-              class="progress-bar-fill" 
-              :style="{ width: (currentTime / duration * 100) + '%' }"
-            ></div>
-          </div>
-        </div>
-
-        <div class="controls-row">
-          <div class="controls-left">
-            <button class="control-btn" @click="togglePlay">
-              <span v-if="isPlaying">⏸</span>
-              <span v-else>▶</span>
-            </button>
-
-            <div class="time-display">
-              {{ formattedCurrentTime }} / {{ formattedDuration }}
+        <div class="controls" :class="{ visible: showControls }">
+          <div class="progress-container" @click="seek">
+            <div class="progress-bar-bg">
+              <div 
+                class="progress-bar-fill" 
+                :style="{ width: (currentTime / duration * 100) + '%' }"
+              ></div>
             </div>
+          </div>
 
-            <div class="volume-control">
-              <button class="control-btn" @click="toggleMute">
-                <span v-if="isMuted || volume === 0">🔇</span>
-                <span v-else>🔊</span>
+          <div class="controls-row">
+            <div class="controls-left">
+              <button class="control-btn" @click="togglePlay">
+                <span v-if="isPlaying">⏸</span>
+                <span v-else>▶</span>
               </button>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                :value="isMuted ? 0 : volume"
-                @input="handleVolumeChange"
-                class="volume-slider"
-              />
+
+              <div class="time-display">
+                {{ formattedCurrentTime }} / {{ formattedDuration }}
+              </div>
+
+              <div class="volume-control">
+                <button class="control-btn" @click="toggleMute">
+                  <span v-if="isMuted || volume === 0">🔇</span>
+                  <span v-else>🔊</span>
+                </button>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  :value="isMuted ? 0 : volume"
+                  @input="handleVolumeChange"
+                  class="volume-slider"
+                />
+              </div>
+            </div>
+
+            <div class="controls-right">
+              <button class="control-btn" @click="toggleFullscreen">
+                <span v-if="isFullscreen">⛶</span>
+                <span v-else>⛶</span>
+              </button>
             </div>
           </div>
-
-          <div class="controls-right">
-            <button class="control-btn" @click="toggleFullscreen">
-              <span v-if="isFullscreen">⛶</span>
-              <span v-else>⛶</span>
-            </button>
-          </div>
         </div>
-      </div>
+      </template>
     </div>
 
-    <PlaylistSidebar :lessons="lessons" :storageKey="storageKey" :collapsible="true" />
+    <PlaylistSidebar :lessons="lessons" :storageKey="storageKey" :collapsible="true" :currentVideoIndex="currentVideoIndex" />
   </div>
 </template>
 
@@ -219,6 +256,14 @@ onUnmounted(() => {
   border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 video {

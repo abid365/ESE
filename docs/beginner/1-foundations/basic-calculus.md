@@ -9,15 +9,23 @@
 - [3Blue1Brown - Essence of Calculus](https://www.youtube.com/results?search_query=3Blue1Brown+-+Essence+of+Calculus)
 - [Khan Academy - Calculus 1](https://www.khanacademy.org/math/ap-calculus-ab)
 
-<CoursePlayer 
-  videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=1"
-  storageKey="foundations-basic-calculus"
-  :lessons="[
-    { title: 'Overview', link: '/docs/beginner/1-foundations/' },
-    { title: 'Basic Calculus', link: '/docs/beginner/1-foundations/basic-calculus' },
-    { title: 'Electric Circuits Principles', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
-    { title: 'Bridge to Electronics', link: '/docs/beginner/1-foundations/bridge-to-electronics' }
-  ]"
+<CoursePlayer
+videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM"
+storageKey="foundations-basic-calculus"
+:lessons="[
+{ title: 'The Essence Of Calculus', link: '[/docs/beginner/1-foundations/](https://www.youtube.com/watch?v=WUvTyaaNkzM)' },
+{ title: 'The paradox of the derivative | Chapter 2', link: '/docs/beginner/1-foundations/basic-calculus' },
+{ title: 'Derivative formulas through geometry | Chapter 3', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
+{ title: 'Visualizing the chain rule and product rule | Chapter 4', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'What\'s so special about Euler\'s number e? | Chapter 5', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'Implicit differentiation, what\'s going on here? | Chapter 6', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'Limits, L\'Hôpital\'s rule, and epsilon delta definitions | Chapter 7', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'Integration and the fundamental theorem of calculus | Chapter 8', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'What does area have to do with slope? | Chapter 9', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'Higher order derivatives | Chapter 10', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'Taylor series | Chapter 11', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+{ title: 'The other way to visualize derivatives | Chapter 12', link: '/docs/beginner/1-foundations/bridge-to-electronics' },
+]"
 />
 
 ---

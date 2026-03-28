@@ -11,6 +11,7 @@ const props = defineProps<{
   lessons: Lesson[];
   storageKey: string;
   collapsible?: boolean;
+  currentVideoIndex?: number;
 }>();
 
 const router = useRouter();
@@ -20,6 +21,9 @@ const completedLessons = ref<Set<string>>(new Set());
 const isCollapsed = ref(true);
 
 const currentIndex = computed(() => {
+  if (props.currentVideoIndex !== undefined && props.currentVideoIndex >= 0) {
+    return props.currentVideoIndex;
+  }
   const path = route.path;
   return props.lessons.findIndex(
     (l) =>
