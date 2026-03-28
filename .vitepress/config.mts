@@ -26,6 +26,7 @@ export default defineConfig({
         items: [
           {
             text: "1. Foundations",
+            collapsed: false,
             items: [
               { text: "Overview", link: "/docs/beginner/1-foundations/" },
               {
@@ -44,6 +45,7 @@ export default defineConfig({
           },
           {
             text: "2. C/C++ Programming",
+            collapsed: false,
             items: [
               { text: "Overview", link: "/docs/beginner/2-c-programming/" },
               {

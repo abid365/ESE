@@ -9,6 +9,17 @@
 - [3Blue1Brown - Essence of Calculus](https://www.youtube.com/results?search_query=3Blue1Brown+-+Essence+of+Calculus)
 - [Khan Academy - Calculus 1](https://www.khanacademy.org/math/ap-calculus-ab)
 
+<CoursePlayer 
+  videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=1"
+  storageKey="foundations-basic-calculus"
+  :lessons="[
+    { title: 'Overview', link: '/docs/beginner/1-foundations/' },
+    { title: 'Basic Calculus', link: '/docs/beginner/1-foundations/basic-calculus' },
+    { title: 'Electric Circuits Principles', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
+    { title: 'Bridge to Electronics', link: '/docs/beginner/1-foundations/bridge-to-electronics' }
+  ]"
+/>
+
 ---
 
 ## How this connects to embedded work
