@@ -1,5 +1,16 @@
 # Beginner 1: Math, Circuits, and Electronics
 
+<CoursePlayer 
+  videoSrc="https://www.w3schools.com/html/mov_bbb.mp4"
+  storageKey="foundations-overview"
+  :lessons="[
+    { title: 'Overview', link: '/docs/beginner/1-foundations/' },
+    { title: 'Basic Calculus', link: '/docs/beginner/1-foundations/basic-calculus' },
+    { title: 'Electric Circuits Principles', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
+    { title: 'Bridge to Electronics', link: '/docs/beginner/1-foundations/bridge-to-electronics' }
+  ]"
+/>
+
 ## Learning Goals
 
 - Understand basic calculus concepts used in engineering.

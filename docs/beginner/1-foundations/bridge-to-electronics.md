@@ -1,5 +1,16 @@
 # Bridge to Electronics Fundamentals
 
+<CoursePlayer 
+  videoSrc="https://www.w3schools.com/html/mov_bbb.mp4"
+  storageKey="foundations-bridge-electronics"
+  :lessons="[
+    { title: 'Overview', link: '/docs/beginner/1-foundations/' },
+    { title: 'Basic Calculus', link: '/docs/beginner/1-foundations/basic-calculus' },
+    { title: 'Electric Circuits Principles', link: '/docs/beginner/1-foundations/electric-circuits-principles' },
+    { title: 'Bridge to Electronics', link: '/docs/beginner/1-foundations/bridge-to-electronics' }
+  ]"
+/>
+
 **Who this is for**: Junior developers who've completed the calculus and circuit laws modules.  
 **Time to complete**: ~3 weeks, 1–2 hours per day.  
 **Goal**: Move from abstract circuit theory to real component-level intuition. By the end, you should be able to look at a schematic and understand _why_ each part is there — not just what it's called.
