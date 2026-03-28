@@ -60,10 +60,16 @@ const formattedCurrentTime = computed(() => formatTime(currentTime.value))
 const formattedDuration = computed(() => formatTime(duration.value))
 
 function formatTime(seconds: number): string {
+  if (!seconds || isNaN(seconds)) return '0:00'
   const mins = Math.floor(seconds / 60)
   const secs = Math.floor(seconds % 60)
   return `${mins}:${secs.toString().padStart(2, '0')}`
 }
+
+const progressPercent = computed(() => {
+  if (!duration.value || !currentTime.value) return 0
+  return (currentTime.value / duration.value) * 100
+})
 
 function togglePlay() {
   if (!videoRef.value) return
@@ -204,7 +210,7 @@ onUnmounted(() => {
             <div class="progress-bar-bg">
               <div 
                 class="progress-bar-fill" 
-                :style="{ width: (currentTime / duration * 100) + '%' }"
+                :style="{ width: progressPercent + '%' }"
               ></div>
             </div>
           </div>

@@ -11,7 +11,7 @@
 
 <CoursePlayer
   videoSrc="https://www.youtube.com/watch?v=WUvTyaaNkzM"
-  storageKey="foundations-basic-calculus"
+  storageKey="foundations"
   :lessons="[
     { title: 'The Essence Of Calculus', link: 'https://www.youtube.com/watch?v=WUvTyaaNkzM' },
     { title: 'The paradox of the derivative | Chapter 2', link: 'https://www.youtube.com/watch?v=9vKqVkMQHKk' },
