@@ -1,30 +1,34 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import Plyr from 'plyr'
-import 'plyr/dist/plyr.css'
+import { onMounted, ref } from "vue";
+import "plyr/dist/plyr.css";
 
 const props = defineProps({
   videoId: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const playerRef = ref(null)
+const playerRef = ref(null);
 
-onMounted(() => {
+onMounted(async () => {
+  const Plyr = (await import("plyr")).default;
   new Plyr(playerRef.value, {
     youtube: {
       noCookie: true,
-      rel: 0
-    }
-  })
-})
+      rel: 0,
+    },
+  });
+});
 </script>
 
 <template>
   <div class="plyr-video">
-    <div :data-plyr-provider="'youtube'" :data-plyr-embed-id="videoId" ref="playerRef"></div>
+    <div
+      :data-plyr-provider="'youtube'"
+      :data-plyr-embed-id="videoId"
+      ref="playerRef"
+    ></div>
   </div>
 </template>
 

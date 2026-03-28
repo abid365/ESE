@@ -17,7 +17,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: "Overview", link: "/roadmap" },
-          { text: "Soft Skills", link: "/soft-skills" },
+          { text: "Required Hardware", link: "/required-hardware" },
         ],
       },
       {
