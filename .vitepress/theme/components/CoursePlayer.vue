@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRoute } from 'vitepress'
 import PlaylistSidebar from './PlaylistSidebar.vue'
 
 interface Lesson {
@@ -14,22 +13,29 @@ const props = defineProps<{
   lessons: Lesson[]
 }>()
 
-const route = useRoute()
+const emit = defineEmits<{
+  (e: 'videoChange', videoSrc: string): void
+}>()
+
+const currentVideoSrc = ref(props.videoSrc)
+
+function handleVideoSelect(link: string) {
+  currentVideoSrc.value = link
+  emit('videoChange', link)
+}
 
 const currentVideoIndex = computed(() => {
-  const idx = props.lessons.findIndex(
-    l => l.link === route.path || l.link === route.path + '.html' || l.link === route.path.replace(/\/$/, '')
-  )
+  const idx = props.lessons.findIndex(l => l.link === currentVideoSrc.value)
   return idx >= 0 ? idx : 0
 })
 
 const isYouTube = computed(() => {
-  return props.videoSrc.includes('youtube.com') || props.videoSrc.includes('youtu.be')
+  return currentVideoSrc.value.includes('youtube.com') || currentVideoSrc.value.includes('youtu.be')
 })
 
 const youtubeVideoId = computed(() => {
   if (!isYouTube.value) return ''
-  const url = props.videoSrc
+  const url = currentVideoSrc.value
   const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)
   return match ? match[1] : ''
 })
@@ -174,6 +180,7 @@ onUnmounted(() => {
     <div class="video-container">
       <template v-if="isYouTube && youtubeEmbedUrl">
         <iframe
+          :key="youtubeVideoId"
           :src="youtubeEmbedUrl"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -183,7 +190,7 @@ onUnmounted(() => {
       <template v-else>
         <video
           ref="videoRef"
-          :src="videoSrc"
+          :src="currentVideoSrc"
           @timeupdate="handleTimeUpdate"
           @loadedmetadata="handleLoadedMetadata"
           @play="handlePlay"
@@ -241,7 +248,7 @@ onUnmounted(() => {
       </template>
     </div>
 
-    <PlaylistSidebar :lessons="lessons" :storageKey="storageKey" :collapsible="true" :currentVideoIndex="currentVideoIndex" />
+    <PlaylistSidebar :lessons="lessons" :storageKey="storageKey" :collapsible="true" :currentVideoIndex="currentVideoIndex" @selectVideo="handleVideoSelect" />
   </div>
 </template>
 

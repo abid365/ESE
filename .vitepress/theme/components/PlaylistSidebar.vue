@@ -14,6 +14,10 @@ const props = defineProps<{
   currentVideoIndex?: number;
 }>();
 
+const emit = defineEmits<{
+  (e: 'selectVideo', link: string): void
+}>()
+
 const router = useRouter();
 const route = useRoute();
 
@@ -87,7 +91,7 @@ function toggleComplete() {
 
 function goToLesson(index: number) {
   if (index >= 0 && index < props.lessons.length) {
-    router.go(props.lessons[index].link);
+    emit('selectVideo', props.lessons[index].link)
   }
 }
 
