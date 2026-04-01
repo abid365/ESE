@@ -52,6 +52,312 @@ This code runs on ARM Cortex-M, AVR, ESP32, or any Arduino-compatible board. The
 
 ---
 
+## How to Upload Code to Different Boards
+
+This section covers uploading (flashing) firmware to Arduino, ESP32, and Raspberry Pi Pico. Understanding the upload process helps when debugging connection issues or switching between platforms.
+
+### Programming Languages Overview
+
+| Language      | Paradigm    | Best For                         | Boards Supported         |
+| ------------- | ----------- | -------------------------------- | ------------------------ |
+| Arduino C/C++ | Compiled    | Performance, libraries, learning | All Arduino, ESP32, Pico |
+| MicroPython   | Interpreted | Rapid prototyping, scripting     | ESP32, Pico, STM32       |
+| TinyGo        | Compiled    | Go language, smaller binaries    | Arduino, ESP32, Pico     |
+
+---
+
+### Arduino C/C++ (Standard Arduino Language)
+
+#### Arduino (UNO, Nano, Mega, R4 WiFi)
+
+**Method**: USB-A to USB-B/USB-C cable + Arduino IDE
+
+**Process**:
+
+```
+1. Connect board via USB cable
+2. Select Tools → Board → Your board type
+3. Select Tools → Port → COM port (or /dev/ttyUSB0 on Linux/Mac)
+4. Click Upload button (→) or press Ctrl+U
+5. IDE compiles code, then uploads automatically
+```
+
+**Bootloader role**: Arduino boards have a bootloader pre-installed. When you press Upload, the IDE resets the board, the bootloader waits ~2 seconds for incoming code, then writes it to flash memory.
+
+::: warning COM port not showing?
+
+- Check the USB cable (some cables are charge-only, no data lines)
+- Install or update CH340/CP2102 drivers for clone boards
+- Try a different USB port or cable
+- On Windows: check Device Manager for driver issues
+  :::
+
+### ESP32 (DevKit, WROOM, WROVER)
+
+**Method**: USB + Arduino IDE with ESP32 board package
+
+**Setup**:
+
+```
+1. In Arduino IDE: Tools → Board → Board Manager
+2. Search for "ESP32" and install "esp32 by Espressif Systems"
+3. Select your specific board: Tools → Board → ESP32 Arduino → "ESP32 Dev Module"
+4. Select the correct port
+```
+
+**Uploading**:
+
+```
+1. Hold BOOT button while pressing and releasing EN (reset)
+2. OR for some boards: Press and hold BOOT, press/reset, release BOOT
+3. Click Upload in IDE
+4. When "Connecting..." appears, release BOOT button
+5. Upload completes and board auto-reboots
+```
+
+**Serial Monitor**: ESP32 uses 115200 baud by default (configurable in Serial.begin()).
+
+::: warning ESP32 upload issues
+
+- **Auto-reset not working**: Some boards don't auto-reset. You must manually enter bootloader mode by holding BOOT + pressing EN, then releasing BOOT while EN is held.
+- **Wrong board selected**: Ensure you select the correct ESP32 variant — pins and flash size vary between modules.
+- **Brownout detection**: If upload fails repeatedly, check your USB cable quality and try a powered USB hub.
+- **3.3V logic only**: ESP32 is NOT 5V tolerant. Never connect 5V signals directly to ESP32 pins.
+  :::
+
+### Raspberry Pi Pico (RP2040)
+
+**Method**: USB + Arduino IDE with Pico board package
+
+**Setup**:
+
+```
+1. In Arduino IDE: Tools → Board → Board Manager
+2. Search for "Pico" and install "Arduino Mbed OS RP2040 Boards"
+3. For MicroPython support: hold BOOT button, plug in USB, drag .uf2 file
+```
+
+**Uploading (C/C++/Arduino)**:
+
+```
+1. Connect Pico via USB (no button press needed for Arduino)
+2. Select Tools → Board → Arduino Mbed OS RP2040 Boards → "Raspberry Pi Pico"
+3. Select Tools → Port → Serial Port (or "Raspberry Pi Pico" if in bootloader mode)
+4. Click Upload
+```
+
+**Entering bootloader mode manually**:
+
+- Hold BOOT button, press and release RESET, release BOOT button
+- A new drive "RPI-RP2" will appear
+- Drag and drop .uf2 file onto the drive
+
+::: tip Pico shows as two serial ports?
+When the Pico is in bootloader mode, it may show as two COM ports. Use the one labeled "Raspberry Pi Pico" (the UF2 mode port is for firmware uploads).
+:::
+
+::: warning Pico voltage caveats
+
+- Pico operates at 3.3V logic — NOT 5V tolerant
+- VSYS pin accepts 1.8V-5.5V for powering via external source
+- The USB port is 5V but the board regulates down to 3.3V for the RP2040 chip
+  :::
+
+### Quick Comparison
+
+| Feature       | Arduino (AVR/ARM)         | ESP32              | Raspberry Pi Pico    |
+| ------------- | ------------------------- | ------------------ | -------------------- |
+| Voltage       | 5V (UNO) / 3.3V (R4)      | 3.3V only          | 3.3V only            |
+| Upload method | Auto-reset via DTR        | Manual BOOT button | Auto-reset or manual |
+| Driver needed | CDC driver (usually auto) | CP2102 or CH340    | No extra driver      |
+| Bootloader    | Pre-installed             | Espressif loader   | UF2 mode             |
+| Upload speed  | ~9600 baud                | ~115200+ baud      | ~115200 baud         |
+
+### Troubleshooting Upload Problems
+
+**"A skill error occurred" / "Failed to upload"**:
+
+- Wrong board selected in Tools → Board
+- Wrong COM port selected
+- Cable is charge-only (no data wires)
+- Board not in correct mode (bootloader not active)
+
+**"Device not recognized"**:
+
+- Install USB drivers (CH340 for clones, CP2102 for some ESP32 boards)
+- Try different USB cable
+- Try different USB port (direct to motherboard is better than USB hub)
+
+**Upload starts but never completes**:
+
+- Board not responding to reset — enter bootloader mode manually
+- Insufficient power from USB — use a powered hub or shorter cable
+- IDE bug — close IDE, delete build folder (in sketch directory), restart
+
+**Board runs old code after upload**:
+
+- Upload succeeded but board didn't reset — manually press reset button
+- Check if code is actually in setup() — maybe it's in loop() with a long-running task
+
+---
+
+### MicroPython
+
+MicroPython is an implementation of Python 3 optimized for microcontrollers. It allows rapid prototyping and interactive scripting without compilation.
+
+#### ESP32 with MicroPython
+
+**Installation**:
+
+```
+1. Download Thonny IDE (thonny.org) or use esptool.py
+2. Download ESP32 MicroPython firmware from micropython.org/download
+3. With Thonny: Tools → Options → Interpreter → MicroPython (ESP32)
+4. Select the correct port and click "Install MicroPython"
+```
+
+**Alternative with esptool**:
+
+```bash
+pip install esptool
+esptool.py --chip esp32 --port COM3 --baud 460800 write_flash 0x1000 esp32-micropython-firmware.bin
+```
+
+**Uploading code**:
+
+- With Thonny: Write code and click Run (F5) to execute, or Save to device
+- Files persist in flash memory and run on boot
+- Use `ampy` for command-line file transfer: `ampy put main.py`
+
+#### Raspberry Pi Pico with MicroPython
+
+**Installation** (simplest method):
+
+```
+1. Download MicroPython .uf2 from micropython.org/download
+2. Hold BOOT button, plug in Pico USB
+3. Drag .uf2 file onto RPI-RP2 drive
+4. Pico reboots as "MICROPYTHON" drive
+```
+
+**Using MicroPython in Thonny**:
+
+```
+1. Tools → Options → Interpreter → MicroPython (Raspberry Pi Pico)
+2. Select the COM port
+3. Write code in editor and press F5 to run, or save as main.py
+```
+
+**Basic MicroPython example**:
+
+```python
+from machine import Pin
+import time
+
+led = Pin(25, Pin.OUT)  # Pico built-in LED on GPIO 25
+
+while True:
+    led.value(1)
+    time.sleep_ms(500)
+    led.value(0)
+    time.sleep_ms(500)
+```
+
+::: tip MicroPython interactive REPL
+Connect to the board's serial port (115200 baud) to get an interactive Python prompt. Type `help()` for commands, `Ctrl+D` to soft reset, `Ctrl+C` to interrupt running code.
+:::
+
+::: warning MicroPython performance caveats
+
+- Interpreted Python is 10-100x slower than compiled C for tight loops or interrupts
+- Not suitable for time-critical applications or precise PWM/DMA
+- Some hardware features (DMA, specific timers) not accessible
+- Library support varies by board — check compatibility
+  :::
+
+---
+
+### TinyGo
+
+TinyGo compiles Go code to WebAssembly or LLVM bitcode for microcontrollers, producing small binaries suitable for constrained devices.
+
+#### Installing TinyGo
+
+**Windows/macOS/Linux**:
+
+```
+1. Download from tinygo.org/getting-started/
+2. Follow installation instructions for your OS
+3. Verify: tinygo version
+```
+
+**Arduino IDE with TinyGo**:
+
+- Use [arduino-tinygo](https://github.com/tinygo-org/arduino-tinygo) board manager
+- Select "TinyGo" as the programmer in Tools menu
+
+#### Uploading with TinyGo
+
+**Via CLI (all platforms)**:
+
+```bash
+# Compile for Arduino Nano
+tinygo flash -target=nano arduino-blink.go
+
+# Compile for ESP32
+tinygo flash -target=esp32-norepl arduino-blink.go
+
+# Compile for Pico
+tinygo flash -target=pico arduino-blink.go
+```
+
+**Using VS Code**:
+
+- Install "TinyGo" extension
+- Use "TinyGo: Flash Device" command (Ctrl+Shift+P)
+
+**TinyGo example (Arduino)**:
+
+```go
+package main
+
+import (
+    "machine"
+    "time"
+)
+
+func main() {
+    led := machine.LED
+    led.Configure(machine.PinConfig{Mode: machine.PinOutput})
+
+    for {
+        led.High()
+        time.Sleep(time.Millisecond * 500)
+        led.Low()
+        time.Sleep(time.Millisecond * 500)
+    }
+}
+```
+
+::: tip TinyGo advantages
+
+- Familiar Go syntax with goroutines and channels for concurrency
+- Smaller binary sizes than Arduino C++ for some applications
+- Direct access to device registers when needed
+- WebAssembly compilation for browser-based simulation
+  :::
+
+::: warning TinyGo limitations
+
+- Not all Go standard library packages supported (no `fmt`, `strings` fully)
+- Some Arduino libraries incompatible — check TinyGo driver list
+- Fewer community resources than Arduino C++
+- Compiler errors can be cryptic for embedded-specific issues
+- Limited debug support compared to Arduino IDE
+  :::
+
+---
+
 ## Module structure
 
 ### Week 1 — Arduino IDE setup and first sketch
@@ -195,6 +501,12 @@ void loop() {
 
 **Check your understanding**: Why do you need a resistor in series with an LED? What happens if you connect an LED directly from pin to GND without a resistor?
 
+**Uploading Week 2 code**: After writing your LED control sketch, click Upload and watch the LED patterns change. If the LED doesn't respond, double-check your circuit and verify the correct pin number in your code matches the physical connection.
+
+::: warning Voltage compatibility when uploading
+When using 5V Arduino boards (UNO, Nano) with 3.3V components: upload your code first, then wire the circuit. Some components are sensitive to voltage differences during programming.
+:::
+
 ---
 
 ### Week 3 — Digital input and button handling
@@ -326,6 +638,16 @@ void loop() {
 
 **Check your understanding**: What is button bounce? Why does it cause problems? How does the debounce code above handle it?
 
+**Uploading Week 3 code**: When uploading button handling code, the Serial Monitor (Tools → Serial Monitor) is your best friend. Open it at 9600 baud to see button press messages. If presses seem "missed" or doubled, check your debounce delay — 50ms is a starting point but mechanical buttons may need adjustment.
+
+::: tip Button behavior differs across boards
+
+- Arduino UNO (5V): Button reads ~5V when pressed
+- Arduino R4 WiFi (3.3V): Button reads ~3.3V when pressed
+- ESP32/RP2040 (3.3V): Same logic levels, but these boards are NOT 5V tolerant on input pins
+- Always verify your board's voltage before connecting buttons powered from external sources
+  :::
+
 ---
 
 ### Week 4 — Analog input with sensors
@@ -456,6 +778,17 @@ int angle = map(analogRead(A0), 0, 1023, 0, 180);
 ```
 
 **Check your understanding**: What is the ADC resolution? If you have a 10-bit ADC on a 5V system, what ADC value corresponds to 2.5V?
+
+**Uploading Week 4 code**: Analog sensor sketches benefit from the Serial Plotter (Tools → Serial Plotter) to visualize readings in real-time. If sensor values seem unstable, remember: ADC inputs are sensitive to electrical noise. Keep sensor wires short and away from motor or PWM circuits.
+
+::: warning ADC pin limits and damage prevention
+
+- Never apply voltages higher than your board's VCC to ADC pins
+- Arduino UNO (5V): ADC max input = 5V
+- Arduino R4 WiFi / ESP32 / Pico (3.3V): ADC max input = 3.3V
+- Exceeding the limit can permanently damage the ADC or entire microcontroller
+- If using voltage dividers for higher voltages, always verify calculated values with a multimeter before connecting
+  :::
 
 ---
 
