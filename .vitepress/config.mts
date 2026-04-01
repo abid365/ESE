@@ -116,11 +116,47 @@ export default defineConfig({
           },
           {
             text: "2. Programming and Protocols",
-            link: "/docs/intermediate/2-programming-protocols/",
+            collapsed: false,
+            items: [
+              {
+                text: "Overview",
+                link: "/docs/intermediate/2-programming-protocols/",
+              },
+              {
+                text: "Advanced C Techniques",
+                link: "/docs/intermediate/2-programming-protocols/advanced-c-techniques.md",
+              },
+              {
+                text: "Serial Protocols: UART, SPI, I2C",
+                link: "/docs/intermediate/2-programming-protocols/serial-protocols-uart-spi-i2c.md",
+              },
+              {
+                text: "Protocol Integration and Troubleshooting",
+                link: "/docs/intermediate/2-programming-protocols/protocol-integration-troubleshooting.md",
+              },
+            ],
           },
           {
             text: "3. PCB, Debugging, and RTOS",
-            link: "/docs/intermediate/3-pcb-debugging-rtos/",
+            collapsed: false,
+            items: [
+              {
+                text: "Overview",
+                link: "/docs/intermediate/3-pcb-debugging-rtos/",
+              },
+              {
+                text: "Hardware and PCB Design",
+                link: "/docs/intermediate/3-pcb-debugging-rtos/hardware-pcb-design.md",
+              },
+              {
+                text: "GDB and OpenOCD Debugging",
+                link: "/docs/intermediate/3-pcb-debugging-rtos/gdb-openocd-debugging.md",
+              },
+              {
+                text: "RTOS Fundamentals",
+                link: "/docs/intermediate/3-pcb-debugging-rtos/rtos-fundamentals.md",
+              },
+            ],
           },
         ],
       },

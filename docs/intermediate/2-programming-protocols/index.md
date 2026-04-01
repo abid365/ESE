@@ -14,6 +14,12 @@
 - Serial protocol fundamentals
 - Integration and troubleshooting of communication stacks
 
+## Deep Dives
+
+- [Advanced C Techniques](./advanced-c-techniques.md)
+- [Serial Protocols: UART, SPI, and I2C](./serial-protocols-uart-spi-i2c.md)
+- [Protocol Integration and Troubleshooting](./protocol-integration-troubleshooting.md)
+
 ## Recommended Videos
 
 - [Advanced Embedded C Tips, Tricks, and Cautions - Microchip University](https://mu.microchip.com/advanced-embedded-c-tips-tricks-and-cautions)
