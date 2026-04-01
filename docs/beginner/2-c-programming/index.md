@@ -1,5 +1,7 @@
 # Beginner 2: C and C++ Programming Basics
 
+**Prerequisites**: Basic algebra and logical thinking. No prior programming required, but familiarity with command line and text editors is helpful.
+
 ## Learning Goals
 
 - Learn C syntax, types, operators, and control flow.

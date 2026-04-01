@@ -1,7 +1,8 @@
 # Multimeter Usage: Measuring What Your Circuit Does
 
-**Who this is for**: Beginners who need to verify and debug their hardware circuits.  
-**Time to complete**: ~1 week, 1–2 hours per day.  
+**Who this is for**: Beginners who need to verify and debug their hardware circuits.
+**Time to complete**: ~1 week, 1–2 hours per day.
+**Prerequisites**: Completion of Beginner 1 (Foundations) modules — understanding voltage, current, and resistance concepts.  
 **Why it matters**: A multimeter is your eyes into the circuit. Before writing firmware or designing a PCB, you need to verify voltages, check for shorts, and measure current draw. It's the most fundamental debugging tool in embedded hardware.
 
 **Videos**:
@@ -252,7 +253,7 @@ Step 3: Check GND connection
 | LED forward            | 1.8-3.3V                   | Wrong color or damaged |
 
 ::: tip Reading resistor color codes
-Resistors use color bands to indicate values:
+Resistors use color bands to indicate values (see [Bridge to Electronics](../1-foundations/bridge-to-electronics#resistors) for full details):
 
 - Band 1: First digit
 - Band 2: Second digit

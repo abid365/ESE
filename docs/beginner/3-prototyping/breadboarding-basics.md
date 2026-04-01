@@ -1,7 +1,8 @@
 # Breadboarding Basics: Building Circuits Without Soldering
 
-**Who this is for**: Beginners learning hardware who want to build and experiment with circuits before committing to permanent soldered designs.  
-**Time to complete**: ~2 weeks, 1–2 hours per day.  
+**Who this is for**: Beginners learning hardware who want to build and experiment with circuits before committing to permanent soldered designs.
+**Time to complete**: ~2 weeks, 1–2 hours per day.
+**Prerequisites**: Completion of Beginner 1 (Foundations) modules — specifically voltage, current, resistance, and basic circuit concepts.  
 **Why it matters**: Breadboarding is the fastest way to prototype circuits. Every embedded developer uses them to test sensor interfaces, validate power supplies, and debug hardware problems before PCB design.
 
 **Videos**:

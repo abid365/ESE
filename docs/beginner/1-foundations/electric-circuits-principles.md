@@ -1,5 +1,9 @@
 # Principles of Electric Circuits: The Laws of Physics
 
+**Who this is for**: Junior developers starting in embedded systems with algebra background.
+**Time to complete**: ~3 weeks, 1–2 hours per day.
+**Prerequisites**: Basic algebra (solving equations, understanding variables).
+
 Before writing firmware to toggle pins or read sensors, you need the circuit-level physics that defines what is electrically safe and possible.
 
 ## Why It Matters in Embedded Systems

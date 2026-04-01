@@ -1,7 +1,8 @@
 # Arduino Beginner Projects: Your First Firmware
 
-**Who this is for**: Developers who've completed the C programming basics and want to apply them to real hardware.  
-**Time to complete**: ~4 weeks, 1–2 hours per day.  
+**Who this is for**: Developers who've completed the C programming basics and want to apply them to real hardware.
+**Time to complete**: ~4 weeks, 1–2 hours per day.
+**Prerequisites**: Beginner 2 (C/C++ Programming) and Beginner 1 (Foundations — especially electronics basics).  
 **Why it matters**: Arduino provides the easiest path from "I wrote code" to "I see an LED blink." It bridges software and hardware, teaching you how firmware interacts with physical components.
 
 **Videos**:

@@ -1,5 +1,7 @@
 # Beginner 3: Intro Hardware and Prototyping
 
+**Prerequisites**: Completion of Beginner 1 (Foundations) and Beginner 2 (C/C++ Programming). This module applies circuit knowledge and programming skills to real hardware.
+
 ## Learning Goals
 
 - Build simple circuits on a breadboard.
