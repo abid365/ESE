@@ -70,7 +70,25 @@ export default defineConfig({
               },
             ],
           },
-          { text: "3. Prototyping", link: "/docs/beginner/3-prototyping/" },
+          {
+            text: "3. Prototyping",
+            collapsed: false,
+            items: [
+              { text: "Overview", link: "/docs/beginner/3-prototyping/" },
+              {
+                text: "Breadboarding Basics",
+                link: "/docs/beginner/3-prototyping/breadboarding-basics.md",
+              },
+              {
+                text: "Multimeter Usage",
+                link: "/docs/beginner/3-prototyping/multimeter-usage.md",
+              },
+              {
+                text: "Arduino Beginner Projects",
+                link: "/docs/beginner/3-prototyping/arduino-beginner-projects.md",
+              },
+            ],
+          },
         ],
       },
       {

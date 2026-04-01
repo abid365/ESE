@@ -12,6 +12,12 @@
 - Multimeter usage
 - Arduino beginner projects
 
+## Deep Dives
+
+- [Breadboarding Basics](./breadboarding-basics.md)
+- [Multimeter Usage](./multimeter-usage.md)
+- [Arduino Beginner Projects](./arduino-beginner-projects.md)
+
 ## Recommended Videos
 
 - [Everything You Need to Know about Breadboards](https://www.youtube.com/watch?v=6WReFkfrUIk)
