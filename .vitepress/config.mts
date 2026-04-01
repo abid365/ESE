@@ -95,7 +95,25 @@ export default defineConfig({
         text: "Intermediate",
         collapsed: false,
         items: [
-          { text: "1. Bare-Metal", link: "/docs/intermediate/1-bare-metal/" },
+          {
+            text: "1. Bare-Metal",
+            collapsed: false,
+            items: [
+              { text: "Overview", link: "/docs/intermediate/1-bare-metal/" },
+              {
+                text: "GPIO, Timers, and Interrupts",
+                link: "/docs/intermediate/1-bare-metal/gpio-timers-interrupts.md",
+              },
+              {
+                text: "ADC and Sensor Interfacing",
+                link: "/docs/intermediate/1-bare-metal/adc-and-sensor-interfacing.md",
+              },
+              {
+                text: "STM32 Bare-Metal Development",
+                link: "/docs/intermediate/1-bare-metal/stm32-bare-metal-development.md",
+              },
+            ],
+          },
           {
             text: "2. Programming and Protocols",
             link: "/docs/intermediate/2-programming-protocols/",

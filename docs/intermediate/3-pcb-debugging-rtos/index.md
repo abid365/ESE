@@ -1,5 +1,7 @@
 # Intermediate 3: PCB, Debugging, and RTOS
 
+**Prerequisites**: Completion of Intermediate 1-2 and all Beginner modules. This module combines hardware design, professional debugging, and real-time operating system concepts.
+
 ## Learning Goals
 
 - Design practical hardware using PCB workflows.

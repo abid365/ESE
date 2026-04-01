@@ -1,5 +1,7 @@
 # Intermediate 2: Advanced C/C++ and Protocols
 
+**Prerequisites**: Completion of Intermediate 1 (Bare-Metal) and all Beginner modules. This module builds on bare-metal register knowledge to implement communication protocols.
+
 ## Learning Goals
 
 - Improve firmware code quality and maintainability.

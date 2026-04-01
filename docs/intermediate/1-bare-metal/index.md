@@ -1,5 +1,7 @@
 # Intermediate 1: Peripherals and Bare-Metal
 
+**Prerequisites**: Completion of all Beginner modules (Foundations, C/C++ Programming, and Prototyping). This module builds on Arduino experience to work directly with hardware registers.
+
 ## Learning Goals
 
 - Program microcontrollers close to hardware registers.
@@ -11,6 +13,12 @@
 - GPIO, timers, ADC, and interrupt handling
 - Bare-metal firmware architecture
 - STM32-focused practical implementation
+
+## Deep Dives
+
+- [GPIO, Timers, and Interrupts](./gpio-timers-interrupts.md)
+- [ADC and Sensor Interfacing](./adc-and-sensor-interfacing.md)
+- [STM32 Bare-Metal Development](./stm32-bare-metal-development.md)
 
 ## Recommended Videos
 
