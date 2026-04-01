@@ -23,3 +23,4 @@
 - [Everything You Need to Know about Breadboards](https://www.youtube.com/watch?v=6WReFkfrUIk)
 - [Learn How to Use a Multimeter!](https://www.youtube.com/watch?v=TdUK6RPdIrA)
 - [Arduino R4 WiFi LESSONS for Absolute Beginners](https://youtu.be/S66Iwhk2V7A?si=XtC_Yms3BW48rMpA)
+- [New Arduino Lessons A-Z](https://www.youtube.com/watch?v=fJWR7dBuc18&list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP)
