@@ -1,37 +1,37 @@
 {
-  "hash": "109e83d2",
+  "hash": "556f831d",
   "configHash": "982202b3",
-  "lockfileHash": "e0f03298",
-  "browserHash": "06d33c45",
+  "lockfileHash": "50a4ecf2",
+  "browserHash": "ccd6b39d",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "6da4f6c2",
+      "fileHash": "2e1247e8",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "1081531e",
+      "fileHash": "9edae4c5",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/dist/index.js",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "ee581d17",
+      "fileHash": "e49fead8",
       "needsInterop": false
     },
     "katex": {
       "src": "../../../node_modules/katex/dist/katex.mjs",
       "file": "katex.js",
-      "fileHash": "1efaee2a",
+      "fileHash": "0f286760",
       "needsInterop": false
     },
     "plyr": {
       "src": "../../../node_modules/plyr/dist/plyr.mjs",
       "file": "plyr.js",
-      "fileHash": "9cf34fa6",
+      "fileHash": "a23d714d",
       "needsInterop": false
     }
   },
